@@ -1,0 +1,89 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiroirUI
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            bool valide = false;
+            bool rep = false;
+            char reponse = 'O';
+            string nombre;
+            int a,b,c,d,e=0;
+            Console.WriteLine();
+            Console.WriteLine(" ******BIENVENUE DANS MON MIROIR******");
+            Console.WriteLine(" *                                   *");
+            Console.WriteLine(" *                                   *");
+            Console.WriteLine(" *************************************");
+            Console.WriteLine();
+            do
+            {
+                Console.WriteLine();
+                Console.Write(" Donnez moi le nombre que vous voulez apercevoir dans le miroir: ");
+                    nombre = Console.ReadLine();
+                if (nombre.Length != 4)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(" Vous devez saisir un nombre à 4 chiffres.");
+                    do
+                    {
+                        Console.WriteLine();
+                        Console.Write(" Désirez-vous toujours saisir un nombre? (O ou N)  ");
+                        rep = true;
+                        reponse = Convert.ToChar(Console.ReadLine().ToUpper());
+                        if (reponse != 'O'&& reponse!='N')
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine(" Vous devez saisir un caractère entre oui 'O' ou non'N'");
+                        }
+                        else 
+                        {
+                            if (reponse == 'O')
+                            {
+                                rep = true;
+                            }
+                        }
+                      
+                    } while (reponse != 'O' && reponse != 'N');
+
+
+                }
+                valide = true;
+            } while (!valide);
+
+                Console.WriteLine();
+                Console.WriteLine(" Votre nombre est:" + nombre);
+            if(nombre.Length==4)
+                {
+                int n = Convert.ToInt16(nombre);
+                // Opération pour permuter les chiffres comme dans un miroir.
+                a = n % 10;         //obtention du chiffre des milliers.
+                b = (n / 10) % 10;  //Obtention du chiffre de centaines
+                c = (n / 100) % 10;  //obtention du chiffre des dizaines. 
+                d = (n / 1000) % 10; //obtention du chiffre des unités.
+                e = (a * 1000) + (b * 100) + (c * 10) + d; //opération pour inverser les chiffres.
+            }
+            Console.WriteLine();
+            Console.WriteLine(" l'image du nombre saisi dans un miroir est: " + e);
+
+            long memoireutilidee = GC.GetTotalMemory(false);
+            Console.WriteLine();
+            Console.WriteLine($" la mémoire utilisée pour ce petit bout de code est: {memoireutilidee} octets.");
+        
+            Console.ReadKey();
+        }
+        ~ Program()
+        {
+
+        }
+        public void dispose()  
+            {
+            GC.SuppressFinalize(this);
+            }
+    }
+}
